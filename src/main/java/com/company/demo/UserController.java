@@ -1,5 +1,7 @@
 package com.company.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,15 +14,17 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
+    @Autowired
+    UserService userService;
 
     @GetMapping
     public ResponseEntity<List<User>> getAll(){
-        return null;
+        return new ResponseEntity<List<User>>(userService.getAll(), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<User> add(){
-        return null;
+    public void add(User user){
+         userService.add(user);
     }
 
 

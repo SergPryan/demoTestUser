@@ -15,7 +15,7 @@ public class UserService {
         return userRepository.getAll();
     }
 
-    public User add(User user){
-        return  userRepository.add(user);
+    public void add(User user){
+          userRepository.add(user);
     }
 }
